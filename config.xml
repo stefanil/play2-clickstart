@@ -48,6 +48,7 @@
     <pruneBranches>false</pruneBranches>
     <remotePoll>false</remotePoll>
     <ignoreNotifyCommit>false</ignoreNotifyCommit>
+    <useShallowClone>false</useShallowClone>
     <buildChooser class="hudson.plugins.git.util.DefaultBuildChooser"/>
     <gitTool>Default</gitTool>
     <submoduleCfg class="list"/>
@@ -73,13 +74,9 @@
   </triggers>
   <concurrentBuild>false</concurrentBuild>
   <builders>
-    <org.jvnet.hudson.plugins.SbtPluginBuilder>
-      <name>sbt</name>
-      <jvmFlags></jvmFlags>
-      <sbtFlags>-Dsbt.log.noformat=true</sbtFlags>
-      <actions>dist</actions>
-      <subdirPath></subdirPath>
-    </org.jvnet.hudson.plugins.SbtPluginBuilder>
+    <hudson.tasks.Shell>
+      <command>java -Xms512M -Xmx1536M -Xss1M -XX:+CMSClassUnloadingEnabled -XX:MaxPermSize=384M -jar sbt-launch.jar dist</command>
+    </hudson.tasks.Shell>
   </builders>
   <publishers>
     <com.cloudbees.plugins.deployer.DeployPublisher>

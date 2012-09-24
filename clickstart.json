@@ -4,7 +4,6 @@
     "source": "git://github.com/benjaminsavoy/play2-hello.git",
     "description": "This is a simple Play 2 Hello World app",
     "doc-url": "https://github.com/benjaminsavoy/play2-hello/blob/master/README.md",
-    "icon": "https://raw.github.com/benjaminsavoy/play2-hello/master/icon.png",
     "runtime": {
         "type": "java",
         "app-parameters" : { 
