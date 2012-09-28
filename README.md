@@ -2,7 +2,7 @@
 
 This clickstart sets up a SBT build service, repository and a basic Play 2 application.
 
-<a href="https://grandcentral.cloudbees.com/?CB_clickstart=https://raw.github.com/CloudBees-community/play2-hello/master/clickstart.json"><img src="https://s3.amazonaws.com/cloudbees-downloads/clickstart/clickstart-now.png"/></a>
+<a href="https://grandcentral.cloudbees.com/?CB_clickstart=https://raw.github.com/CloudBees-community/play2-clickstart/master/clickstart.json"><img src="https://s3.amazonaws.com/cloudbees-downloads/clickstart/clickstart-now.png"/></a>
 
 Launch this clickstart and glory could be yours too ! Use it as a building block if you like.
 
@@ -36,7 +36,7 @@ Then finally update your application from your own computer:
 
 ## To build this locally:
 
-In the play2-hello, open a command line, and invoke maven by typing "play dist" to build the distributable .zip file, then deploy it on cloudbees typing:
+In the play2-clickstart, open a command line, and invoke maven by typing "play dist" to build the distributable .zip file, then deploy it on cloudbees typing:
 
     bees app:deploy -a MYAPP_ID -t java -RJAVA_OPTS='-Dhttp.port=$app_port' -Rclass=play.core.server.NettyServer -Rclasspath=APP_NAME-VERSION/lib/* -Rargs='$app_dir/app/APP_NAME-VERSION/' dist\APP_NAME-VERSION.zip proxyBuffering=false
 
