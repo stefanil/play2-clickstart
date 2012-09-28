@@ -1,9 +1,9 @@
 {
     "id": "play2",
     "name": "Play 2 Helloworld example",
-    "source": "git://github.com/benjaminsavoy/play2-hello.git",
+    "source": "git://github.com/Cloudbees-community/play2-hello.git",
     "description": "This is a simple Play 2 Hello World app",
-    "doc-url": "https://github.com/benjaminsavoy/play2-hello/blob/master/README.md",
+    "doc-url": "https://github.com/Cloudbees-community/play2-hello/blob/master/README.md",
     "runtime": {
         "type": "java",
         "app-parameters" : { 
@@ -12,19 +12,11 @@
             "runtime.classpath": "helloworld-1.0/lib/*",
             "runtime.args": "$app_dir/app/helloworld-1.0/"},
         "app-variables" : { 
-            "proxyBuffering" : false,
-            "serverPool": "pool-431"}
+            "proxyBuffering" : false}
     },
-    "databases": [
-        {
-            "type": "mysql",
-            "alias": "PlayDB"
-        }
-    ],
     "build-with-jenkins": {
-        "plugins" : ["git", "sbt"],
         "template": {
             "type": "https://raw.github.com/benjaminsavoy/play2-hello/master/config.xml"
         }
-     }
+    }
 }
