@@ -4,7 +4,6 @@
     "source": "git://github.com/CloudBees-community/play2-clickstart.git",
     "description": "This is a simple Play 2 Hello World app",
     "doc-url": "https://github.com/CloudBees-community/play2-clickstart/blob/master/README.md",
-    "disabled": true,
     "runtime": {
         "type": "java",
         "app-parameters" : { 
@@ -13,8 +12,7 @@
             "runtime.classpath": "helloworld-1.0/lib/*",
             "runtime.args": "$app_dir/app/helloworld-1.0/"},
         "app-variables" : { 
-            "proxyBuffering" : false,
-            "serverPool": "pool-431"}
+            "proxyBuffering" : false}
     },
     "databases": [
         {
