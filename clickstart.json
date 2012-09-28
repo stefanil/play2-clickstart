@@ -1,8 +1,8 @@
 {
     "id": "play2",
-    "name": "Play 2 Helloworld example",
+    "name": "Play 2",
     "source": "git://github.com/CloudBees-community/play2-clickstart.git",
-    "description": "This is a simple Play 2 Hello World app",
+    "description": "Simple Play 2 app",
     "doc-url": "https://github.com/CloudBees-community/play2-clickstart/blob/master/README.md",
     "runtime": {
         "type": "java",
