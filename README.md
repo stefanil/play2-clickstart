@@ -35,7 +35,7 @@ Create a new software project in Jenkins, changing the following:
     
 Then finally update your application from your own computer:
     
-    bees config:set -a MYAPP_ID runtime.JAVA_OPTS='-Dhttp.port=$app_port' runtime.class=play.core.server.NettyServer runtime.classpath=APP_NAME-VERSION/lib/* -runtime.args='$app_dir/app/APP_NAME-VERSION/'
+    bees config:set -a MYAPP_ID -RJAVA_OPTS='-Dhttp.port=$app_port' -Rclass=play.core.server.NettyServer -Rlasspath=APP_NAME-VERSION/lib/* -Rargs='$app_dir/app/APP_NAME-VERSION/'
     bees app:restart MYAPP_ID
     bees app:update MYAPP_ID containerType=java proxyBuffering=false
 
