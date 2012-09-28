@@ -6,33 +6,7 @@ This clickstart sets up a SBT build service, repository and a basic Play 2 appli
 
 Launch this clickstart and glory could be yours too ! Use it as a building block if you like.
 
-You can launch this on Cloudbees via a clickstart automatically, or follow the instructions below. 
-
-# Deploying manually: 
-
-## To build and deploy this on CloudBees, follow those steps:
-
-Create application:
-
-    bees app:create MYAPP_ID
-
-Create a new software project in Jenkins, changing the following:
-
-* Add this git repository (or yours, with this code) on Jenkins
-* Add an "Execute Shell" build step with:
-    
-        java -Xms512M -Xmx1536M -Xss1M -XX:+CMSClassUnloadingEnabled -XX:MaxPermSize=384M -jar sbt-launch.jar -Dsbt.log.noformat=true dist
-    
-* Also add a post-build step "Deploy to CloudBees" with those parameters:
-
-        Applications: First Match
-        Application Id: MYAPP_ID
-        Filename Pattern: dist/APP_NAME-VERSION.zip
-        Advanced... > Environment: java
-    
-Then finally update your application from your own computer:
-    
-    bees app:update MYAPP_ID runtime.JAVA_OPTS='-Dhttp.port=$app_port' runtime.class=play.core.server.NettyServer runtime.classpath=APP_NAME-VERSION/lib/* runtime.args='$app_dir/app/APP_NAME-VERSION/' proxyBuffering=false
+You can launch this on Cloudbees via a clickstart automatically, and test this locally if you wish.
 
 ## To build this locally:
 

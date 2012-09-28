@@ -15,7 +15,8 @@
             "runtime.classpath": "helloworld-1.0/lib/*",
             "runtime.args": "$app_dir/app/helloworld-1.0/"},
         "app-variables" : { 
-            "proxyBuffering" : false}
+            "proxyBuffering" : false
+        }
     },
     "build-with-jenkins": {
         "template": {
