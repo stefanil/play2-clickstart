@@ -4,6 +4,7 @@
     "source": "git://github.com/Cloudbees-community/play2-hello.git",
     "description": "This is a simple Play 2 Hello World app",
     "doc-url": "https://github.com/Cloudbees-community/play2-hello/blob/master/README.md",
+    "disabled": true,
     "runtime": {
         "type": "java",
         "app-parameters" : { 
