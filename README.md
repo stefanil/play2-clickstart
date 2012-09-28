@@ -21,7 +21,7 @@ Create a new software project in Jenkins, changing the following:
 * Add this git repository (or yours, with this code) on Jenkins
 * Add an "Execute Shell" build step with:
     
-        java -Xms512M -Xmx1536M -Xss1M -XX:+CMSClassUnloadingEnabled -XX:MaxPermSize=384M -jar /opt/sbt/sbt-launch-0.11.3-2.jar -Dsbt.log.noformat=true dist
+        java -Xms512M -Xmx1536M -Xss1M -XX:+CMSClassUnloadingEnabled -XX:MaxPermSize=384M -jar sbt-launch.jar -Dsbt.log.noformat=true dist
     
 * Also check "Deploy to CloudBees" with those parameters:
 
