@@ -23,7 +23,7 @@ Create a new software project in Jenkins, changing the following:
     
         java -Xms512M -Xmx1536M -Xss1M -XX:+CMSClassUnloadingEnabled -XX:MaxPermSize=384M -jar sbt-launch.jar -Dsbt.log.noformat=true dist
     
-* Also check "Deploy to CloudBees" with those parameters:
+* Also add a post-build step "Deploy to CloudBees" with those parameters:
 
         Applications: First Match
         Application Id: MYAPP_ID
@@ -36,12 +36,16 @@ Then finally update your application from your own computer:
 
 ## To build this locally:
 
-In the play2-clickstart, open a command line, and invoke maven by typing "play dist" to build the distributable .zip file, then deploy it on cloudbees typing:
+In the play2-clickstart, open a command line, and by typing either:
 
-    bees app:deploy -a MYAPP_ID -t java -RJAVA_OPTS='-Dhttp.port=$app_port' -Rclass=play.core.server.NettyServer -Rclasspath=APP_NAME-VERSION/lib/* -Rargs='$app_dir/app/APP_NAME-VERSION/' dist\APP_NAME-VERSION.zip proxyBuffering=false
+    java -Xms512M -Xmx1536M -Xss1M -XX:+CMSClassUnloadingEnabled -XX:MaxPermSize=384M -jar sbt-launch.jar dist
+    play dist # if you have the Play! framework installed
 
-## To deploy this locally:
+Then deploy it on cloudbees typing:
 
-Make sure you have the Play! framework install and inside your type:
+    bees app:deploy -a MYAPP_ID -t java -RJAVA_OPTS='-Dhttp.port=$app_port' -Rclass=play.core.server.NettyServer -Rclasspath=APP_NAME-VERSION/lib/* -Rargs='$app_dir/app/APP_NAME-VERSION/' dist/APP_NAME-VERSION.zip proxyBuffering=false
 
-    play run
+## To deploy this locally, use either:
+
+    java -Xms512M -Xmx1536M -Xss1M -XX:+CMSClassUnloadingEnabled -XX:MaxPermSize=384M -jar sbt-launch.jar run
+    play run # if you have the Play! framework installed
