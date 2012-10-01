@@ -5,6 +5,7 @@
     "description": "Simple Play 2 app",
     "doc-url": "https://github.com/CloudBees-community/play2-clickstart/blob/master/README.md",
     "app-package": "https://s3.amazonaws.com/cloudbees-downloads/clickstart/play2-hello.zip", 
+    "icon" : "https://raw.github.com/CloudBees-community/jboss-db-example/master/icon.png", 
     "disabled": false,
     "runtime": {
         "type": "java",
