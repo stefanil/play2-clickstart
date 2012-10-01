@@ -18,6 +18,12 @@
             "proxyBuffering" : false
         }
     },
+    "databases": [
+        {
+            "type": "mysql",
+            "alias": "Play2-clickstart"
+        }
+    ],
     "build-with-jenkins": {
         "template": {
             "type": "https://raw.github.com/CloudBees-community/play2-clickstart/master/config.xml"
