@@ -21,7 +21,7 @@
     "databases": [
         {
             "type": "mysql",
-            "alias": "Play2-clickstart"
+            "alias": "db"
         }
     ],
     "build-with-jenkins": {
