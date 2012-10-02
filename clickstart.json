@@ -5,7 +5,7 @@
     "description": "Get started with the Play! Framework, version 2, hosted natively",
     "doc-url": "https://github.com/CloudBees-community/play2-clickstart/blob/master/README.md",
     "app-package": "https://s3.amazonaws.com/cloudbees-downloads/clickstart/play2-hello.zip", 
-    "icon" : "https://raw.github.com/CloudBees-community/jboss-db-example/master/icon.png", 
+    "icon" : "https://raw.github.com/CloudBees-community/play2-clickstart/master/icon.png", 
     "disabled": false,
     "runtime": {
         "type": "java",
