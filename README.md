@@ -21,36 +21,33 @@ Create a new software project in Jenkins, changing the following:
 * Add this git repository (or yours, with this code) on Jenkins
 * Change JDK to:
     
-        Sun JDK 1.6 (Latest)
+        Oracle JDK 1.7 (Latest)
     
 * Add an "Execute Shell" build step with:
     
-        java -Xms512M -Xmx1536M -Xss1M -XX:+CMSClassUnloadingEnabled -XX:MaxPermSize=384M -jar sbt-launch.jar -Dsbt.log.noformat=true dist
+        java -Xms512M -Xmx1536M -Xss1M -XX:+CMSClassUnloadingEnabled -XX:MaxPermSize=384M -jar /opt/sbt/sbt-launch-0.11.3-2.jar -Dsbt.log.noformat=true dist
     
 * Also add a post-build step "Deploy to CloudBees" with those parameters:
 
         Applications: First Match
         Application Id: MYAPP_ID
-        Filename Pattern: dist/APP_NAME-VERSION.zip
+        Filename Pattern: dist/*.zip
     
 Then finally update your application from your own computer:
     
-    bees config:set -a MYAPP_ID -RJAVA_OPTS='-Dhttp.port=$app_port' -Rclass=play.core.server.NettyServer -Rlasspath=APP_NAME-VERSION/lib/* -Rargs='$app_dir/app/APP_NAME-VERSION/'
+    bees config:set -a MYAPP_ID -Rjava_version=1.7 containerType=play2 proxyBuffering=false
     bees app:restart MYAPP_ID
-    bees app:update MYAPP_ID containerType=java proxyBuffering=false
 
 ## To build this locally:
 
-In the play2-clickstart, open a command line, and by typing either:
+In the play2-clickstart directory, open a command line, and by typing either:
 
-    java -Xms512M -Xmx1536M -Xss1M -XX:+CMSClassUnloadingEnabled -XX:MaxPermSize=384M -jar sbt-launch.jar dist
-    play dist # if you have the Play! framework installed
+    play dist
 
 Then deploy it on cloudbees typing:
 
-    bees app:deploy -a MYAPP_ID -t java -RJAVA_OPTS='-Dhttp.port=$app_port' -Rclass=play.core.server.NettyServer -Rclasspath=APP_NAME-VERSION/lib/* -Rargs='$app_dir/app/APP_NAME-VERSION/' dist/APP_NAME-VERSION.zip proxyBuffering=false
+    bees app:deploy -a MYAPP_ID -t play2 -Rjava_version=1.7 dist/*.zip proxyBuffering=false
 
 ## To deploy this locally, use either:
 
-    java -Xms512M -Xmx1536M -Xss1M -XX:+CMSClassUnloadingEnabled -XX:MaxPermSize=384M -jar sbt-launch.jar run
-    play run # if you have the Play! framework installed
+    play run

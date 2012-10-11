@@ -66,7 +66,7 @@
   <disabled>false</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
   <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
-  <jdk>Sun JDK 1.6 (latest)</jdk>
+  <jdk>Oracle JDK 1.7 (latest)</jdk>
   <triggers class="vector">
     <com.cloudbees.jenkins.forge.ForgePushTrigger>
       <spec></spec>
@@ -75,7 +75,7 @@
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Shell>
-      <command>java -Xms512M -Xmx1536M -Xss1M -XX:+CMSClassUnloadingEnabled -XX:MaxPermSize=384M -jar sbt-launch.jar -Dsbt.log.noformat=true dist</command>
+      <command>java -Xms512M -Xmx1536M -Xss1M -XX:+CMSClassUnloadingEnabled -XX:MaxPermSize=384M -jar /opt/sbt/sbt-launch-0.11.3-2.jar -Dsbt.log.noformat=true dist</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers>-
