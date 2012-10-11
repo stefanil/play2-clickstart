@@ -13,6 +13,7 @@
             "runtime.JAVA_OPTS" : "-Dhttp.port=$app_port", 
             "runtime.class" : "play.core.server.NettyServer",
             "runtime.classpath": "helloworld-1.0/lib/*",
+            "runtime.java_version": "1.7",
             "runtime.args": "$app_dir/app/helloworld-1.0/"},
         "app-variables" : { 
             "proxyBuffering" : false
