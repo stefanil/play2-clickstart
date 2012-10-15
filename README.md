@@ -40,7 +40,7 @@ Then finally update your application from your own computer:
 
 ## To build this locally:
 
-In the play2-clickstart directory, open a command line, and by typing either:
+In the play2-clickstart directory, open a command line, and then type:
 
     play dist
 
@@ -48,6 +48,8 @@ Then deploy it on cloudbees typing:
 
     bees app:deploy -a MYAPP_ID -t play2 -Rjava_version=1.7 dist/*.zip proxyBuffering=false
 
-## To deploy this locally, use either:
+## To deploy this locally:
+
+Use the following command, and then browse to localhost:9000
 
     play run
