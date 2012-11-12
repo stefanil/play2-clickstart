@@ -7,6 +7,9 @@
     "app-package": "https://s3.amazonaws.com/cloudbees-downloads/clickstart/play2-hello.zip", 
     "icon" : "https://d3ko533tu1ozfq.cloudfront.net/clickstart/play2_icon.png", 
     "disabled": false,
+    "supported-by" : "cloudbees", 
+    "order" : 1,
+
     "runtime": {
         "type": "play2",
         "app-parameters" : { 
