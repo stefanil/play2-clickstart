@@ -40,24 +40,21 @@ Then finally update your application from your own computer:
 
 ## To build this locally:
 
-You will need play2 installed, or sbt (ideally)
+You will need play2 installed, or sbt (this jenkins build currently uses SBT).
 
 In the play2-clickstart directory, open a command line, and then type:
 
     play dist
-    or
-    sbt dist
 
 Then deploy it on cloudbees typing:
 
     bees app:deploy -a MYAPP_ID -t play2 -Rjava_version=1.7 dist/*.zip proxyBuffering=false
 
-## To deploy this locally:
+## To run this locally:
 
 
 You will need a locally running MySQL server for this instance. 
 
-You can also use SBT directly if you wish. 
 
 Use the following command, and then browse to localhost:9000
 
