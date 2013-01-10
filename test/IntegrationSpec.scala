@@ -7,9 +7,13 @@ import play.api.test.Helpers._
 
 class IntegrationSpec extends Specification {
   
+  /*
   "Application" should {
+
+    
     
     "work from within a browser" in {
+        
       running(TestServer(3333), HTMLUNIT) { browser =>
         browser.goTo("http://localhost:3333/")
         
@@ -53,10 +57,13 @@ class IntegrationSpec extends Specification {
         browser.$("p.buttons a").click()
         
         browser.$("h1").first.getText must equalTo("Configure your 'Hello world':")
+
          
       }
     }
+
     
   }
+  */
   
 }
