@@ -6,7 +6,7 @@
     "doc-url": "https://github.com/CloudBees-community/play2-clickstart/blob/master/README.md",    
     "icon" : "https://d3ko533tu1ozfq.cloudfront.net/clickstart/play2_icon.png", 
     "app-package" : "https://s3.amazonaws.com/cloudbees-downloads/clickstart/play21-hello.zip",
-    "app-package-type" : "play2",
+    "app-package-type" : "zip",
     "disabled": false,
     "supported-by" : "cloudbees", 
     "order" : 1,
