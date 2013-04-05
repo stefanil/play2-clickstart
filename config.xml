@@ -78,7 +78,12 @@
       <command>java -Xms512M -Xmx1536M -Xss1M -XX:+CMSClassUnloadingEnabled -XX:MaxPermSize=384M -jar /opt/sbt/sbt-launch-0.11.3-2.jar -Dsbt.log.noformat=true clean compile test dist</command>
     </hudson.tasks.Shell>
   </builders>
-  <publishers>-
+  <publishers>
+    <hudson.tasks.junit.JUnitResultArchiver>
+      <testResults>target/test-reports/*.xml</testResults>
+      <keepLongStdio>false</keepLongStdio>
+      <testDataPublishers/>
+    </hudson.tasks.junit.JUnitResultArchiver>
     <com.cloudbees.plugins.deployer.DeployPublisher>
       <deployIfUnstable>false</deployIfUnstable>
       <configuration>
