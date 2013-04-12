@@ -17,7 +17,8 @@
             "runtime.java_version": "1.7"
         },
         "app-variables" : { 
-            "proxyBuffering" : false
+            "proxyBuffering" : false, 
+            "http_version" : "1.1"
         }
     },
     "databases": [
