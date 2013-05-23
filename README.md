@@ -53,9 +53,20 @@ Then deploy it on cloudbees typing:
 ## To run this locally:
 
 
-You will need a locally running MySQL server for this instance. 
+You will need a locally running MySQL server for this instance, 
+or you can use your cloudbees DB created above as part of of the clickstart.
+
+provide the environment variables so Play can connect to your DB: 
+    
+    export DATABASE_URL_DB=mysql://URL_TO_DB_HERE
+    export DATABASE_PASSWORD_DB=PASSWORD_HERE
+    export DATABASE_USERNAME_DB=USERNAME_HERE
 
 
-Use the following command, and then browse to localhost:9000
+Use the following command, and then browse to localhost:9000:
 
     play run
+    
+    
+To get your cloudbees DB info - run bees db:info -p youraccount/appname(from your clickstart)    
+
