@@ -8,6 +8,9 @@ Launch this clickstart and glory could be yours too ! Use it as a building block
 
 You can launch this on Cloudbees via a clickstart automatically, or follow the instructions below. 
 
+If you don't have a cloudbees account, Sign in with GitHub:
+<button onClick="javascript:window.location='https://grandcentral.cloudbees.com/authenticate/start?provider=github&login_redirect=/';"><img src="https://grandcentral.cloudbees.com/images/github-icon_40.png" /></button>
+
 # Deploying manually: 
 
 ## To build and deploy this on CloudBees, follow those steps:
