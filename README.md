@@ -67,7 +67,7 @@ provide the environment variables so Play can connect to your DB:
 
 If you want to connect to your cloudbees provided DB that was created: 
 
-To find the details to to connect from the desktop to your CloudBees DB:
+First, find the details to to connect from the desktop to your CloudBees DB:
     bees db:info -p yourCloudBeesDbId
 
 Then note the info and set the following environment variables: 
