@@ -74,7 +74,7 @@ Then note the info and set the following environment variables:
 
     export DATABASE_PASSWORD_DB="(from above)"
     export DATABASE_USERNAME_DB="(from above)"
-    export DATABASE_URL_DB="mysql:/(host and port from above)/(database username)"
+    export DATABASE_URL_DB="mysql://(host and port from above)/(database username from above)"
 
 
 
