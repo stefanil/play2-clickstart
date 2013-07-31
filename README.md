@@ -61,9 +61,22 @@ or you can use your cloudbees DB created above as part of of the clickstart.
 
 provide the environment variables so Play can connect to your DB: 
     
-    export DATABASE_URL_DB=mysql://URL_TO_DB_HERE
+    export DATABASE_URL_DB=mysql://URL_TO_DB_HERE/DB_NAME
     export DATABASE_PASSWORD_DB=PASSWORD_HERE
     export DATABASE_USERNAME_DB=USERNAME_HERE
+
+If you want to connect to your cloudbees provided DB that was created: 
+
+To find the details to to connect from the desktop to your CloudBees DB:
+    bees db:info -p yourCloudBeesDbId
+
+Then note the info and set the following environment variables: 
+
+    export DATABASE_PASSWORD_DB="(from above)"
+    export DATABASE_USERNAME_DB="(from above)"
+    export DATABASE_URL_DB="mysql:/(host and port from above)/(database username)"
+
+
 
 
 Use the following command, and then browse to localhost:9000:
