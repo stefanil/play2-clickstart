@@ -17,7 +17,16 @@ If you don't have a cloudbees account, Sign in with GitHub:
 
 Create application:
 
-    bees app:create MYAPP_ID
+    bees app:create MYAPP_ID -t play2
+    
+Create database:
+
+    bees db:create -u DB_USER -p DB_PASSWORD DBNAME
+
+Bind database as datasource:
+
+    bees app:bind -db DBNAME -a MYAPP_ID -as ExampleDS    
+
 
 Create a new software project in Jenkins, changing the following:
 
