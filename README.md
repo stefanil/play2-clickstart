@@ -54,7 +54,7 @@ Then finally update your application from your own computer:
 
 You will need play2 installed, or sbt (this jenkins build currently uses SBT).
 
-In the play2-clickstart directory, open a command line, and then type:
+In the play2-clickstart-java directory, open a command line, and then type:
 
     play dist
 
@@ -120,3 +120,7 @@ To get your cloudbees DB info - run bees db:info -p youraccount/appname(from you
 I suggest to use an extranal client like SQLExplorer or Squirrel SQL. A good tutorial on this can be found here:
  
 http://www.comtechies.com/2013/03/how-to-create-and-connect-cloudbees.html
+
+# Proceed with Adapting the Application
+
+The provided application is rather a simple Scala application than a Java application based on Play 2. So the adaptions are quite huge.
