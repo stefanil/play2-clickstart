@@ -110,7 +110,7 @@ In case of the previously given example this would end in the following concrete
 
 Use the following command, and then browse to localhost:9000:
 
-    play run   
+    play -Dconfig.resource="conf/production.conf" run   
     
 To get your cloudbees DB info - run bees db:info -p youraccount/appname(from your clickstart) 
 
