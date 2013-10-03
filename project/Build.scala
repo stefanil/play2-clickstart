@@ -5,15 +5,15 @@ import cloudbees.Plugin._
 
 object ApplicationBuild extends Build {
 
-  val appName         = "play2-java-clickstart"
+  val accountName     = "devel"
+  val appName         = "play2-java-clickstart"  
   val appVersion      = "0.1"
+  
   val appDependencies = Seq(
     javaCore,
     javaJdbc,
     javaEbean,
-    "mysql" % "mysql-connector-java" % "5.1.21", 
-    jdbc, 
-    anorm
+    "mysql" % "mysql-connector-java" % "5.1.21"
   )
 
   val main = play.Project(appName, appVersion, appDependencies)
@@ -27,6 +27,6 @@ object ApplicationBuild extends Build {
       }
     )
     .settings(cloudBeesSettings :_*)
-    .settings(CloudBees.applicationId := Some("devel/play2-java-test"))
+    .settings(CloudBees.applicationId := Some(accountName+"/"+appName))
 
 }
