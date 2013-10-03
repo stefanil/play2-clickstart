@@ -1,4 +1,4 @@
-#  Setting up a simple Play Java Application by using a Clickstart
+#  Integrating a Play Java Application with Cloudbees by using a Clickstart
 
 This Clickstartstart uses Play 2.1.4.
 
@@ -15,7 +15,52 @@ You can launch this on Cloudbees via a clickstart automatically, or follow the i
 If you don't have a cloudbees account, Sign in with GitHub:
 <button onClick="javascript:window.location='https://grandcentral.cloudbees.com/authenticate/start?provider=github&login_redirect=/';"><img src="https://grandcentral.cloudbees.com/images/github-icon_40.png" /></button>
 
-## 2. Configure the DB for local development
+## 2. Customize the Jenkins Configuration
+
+Extract infos about the database:
+
+    bees db:info -p DB_ID
+    
+Adapt the Execute Shell Command (Build Step) by replacing the dummy with concrete values.
+
+    export DATABASE_URL_DB=na 
+    export DATABASE_USERNAME_DB=na 
+    export DATABASE_PASSWORD_DB=na
+
+## 3. Clone Git Repository
+
+Clone the created Git repository via:   
+
+    git clone %REPO_PATH%
+    
+See Cloudbees Repositories for the %REPO_PATH%.
+
+## 4. Adapt Build.scala
+
+First set the correct application name (appName) and afterwards the correct account name (accountName), under which the application runs.
+Push the changes to the git repository.
+
+## 5. Deploy subsequent changes
+
+There are a few ways you can deploy:
+A) Via git push - with the clickstart
+B) Via a plugin: play cloudbees-deploy
+C) Via the cloudbees SDK: bees app:deploy
+
+A) The given Clickstart configures the Jenkins server, to trigger a build on each push to the Git Repopsitory.
+
+B) To explicitely and manually trigger the deployment you can use Jenkins itself or just use the following command from your local client:   
+
+    play cloudbees-deploy
+
+See https://github.com/CloudBees-community/sbt-cloudbees-play-plugin/ and http://developer.cloudbees.com/bin/view/RUN/Playframework for further infomration on this topic.
+
+C) The third opportunity uses the Cloudbees SDK and as B) does not include git pushes automatically. The distribution get locally assembled.
+
+    play dist
+    bees app:deploy -a APP_ID -t play2  dist/APP_NAME-VERSION.zip
+
+## 6. Configure the DB for local development
 
 A) You will need a locally running MySQL server for this instance, or 
 B) you can use your cloudbees DB created above as part of of the clickstart.
@@ -68,19 +113,10 @@ Use the following command, and then browse to localhost:9000:
     
 To get your cloudbees DB info - run bees db:info -p youraccount/appname(from your clickstart) 
 
-## 3. Adapt Build.scala
-
-First set the correct application name. Second set Cloudbees application ID:
-
-settings(CloudBees.applicationId := Some("ACCOUNT_NAME/CLOUDBEES_APPLICATION_ID"))
-
-## 4. Deploy subsequent changes
-
-Just use the command:   play cloudbees-deploy
 
 # Manual Remote-Deployment: 
 
-To build and deploy the application on CloudBees, follow those steps:
+To build and deploy the application on CloudBees manually, follow those steps:
 
 Create application:
 
@@ -117,6 +153,7 @@ Then finally update your application from your own computer:
     bees config:set -a MYAPP_ID -Rjava_version=1.7 containerType=play2 proxyBuffering=false
     bees app:restart MYAPP_ID
 
+
 # Manual Local-Build and Deployment to Cloudbees:
 
 You will need play2 installed, or sbt (this jenkins build currently uses SBT).
@@ -138,3 +175,6 @@ http://www.comtechies.com/2013/03/how-to-create-and-connect-cloudbees.html
 # Proceed with Adapting the Application
 
 The provided application is rather a simple Scala application than a Java application based on Play 2. So the adaptions are quite huge.
+
+
+
