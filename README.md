@@ -1,6 +1,8 @@
-#  Automatic Remote-Deployment (by using a Clickstart):
+#  Setting up a simple Play Java Application by using a Clickstart
 
-## Initialize the Application on CLoudbees
+This Clickstartstart uses Play 2.1.4.
+
+## 1. Initialize the Application on CLoudbees
 
 This clickstart sets up a SBT build service, repository and a basic Play 2 Java application.
 
@@ -13,7 +15,66 @@ You can launch this on Cloudbees via a clickstart automatically, or follow the i
 If you don't have a cloudbees account, Sign in with GitHub:
 <button onClick="javascript:window.location='https://grandcentral.cloudbees.com/authenticate/start?provider=github&login_redirect=/';"><img src="https://grandcentral.cloudbees.com/images/github-icon_40.png" /></button>
 
-## Deploy subsequent changes
+## 2. Configure the DB for local development
+
+A) You will need a locally running MySQL server for this instance, or 
+B) you can use your cloudbees DB created above as part of of the clickstart.
+
+In both cases you will also need the db password which must be resolved by using the following command:
+
+  bees db:info -p DB_NAME
+
+.. where DB_NAME must be replaced by the name of your database (f.e.: bees db:info -p av-pirna).
+
+### A) Provide the environment variables so Play can connect to your local DB: 
+    
+    export DATABASE_URL_DB=mysql://URL_TO_DB_HERE/DB_NAME
+    export DATABASE_PASSWORD_DB=PASSWORD_HERE
+    export DATABASE_USERNAME_DB=USERNAME_HERE
+
+### B) Provide the environment variables so Play can connect to the remote DBaaS: 
+
+First, find the details to to connect from the desktop to your CloudBees DB:
+
+    bees db:info -p DB_ID
+
+For example for using the database with the id av-pirna, extract the information like this:
+
+    $ bees db:info -p av-pirna
+
+    Database name: av-pirna
+    Account:       devel
+    Status:        active
+    Master:        ec2-23-21-211-172.compute-1.amazonaws.com:3306
+    Port:          3306
+    Username:      av-pirna
+    Password:      %Commented out%
+
+Then note the info and set the following environment variables: 
+
+    export DATABASE_URL_DB="mysql://(EC2 host and port from above)/(database username from above)"
+    export DATABASE_USERNAME_DB="(from above)"
+    export DATABASE_PASSWORD_DB="(from above)"
+
+In case of the previously given example this would end in the following concrete values:
+
+    DATABASE_URL_DB="mysql://ec2-23-21-211-172.compute-1.amazonaws.com:3306/av-pirna"
+    DATABASE_USERNAME_DB="av-pirna"
+    DATABASE_PASSWORD_DB="%Commented out%"
+
+Use the following command, and then browse to localhost:9000:
+
+    play run   
+    
+To get your cloudbees DB info - run bees db:info -p youraccount/appname(from your clickstart) 
+
+## 3. Adapt Build.scala
+
+First set the correct application name. Second set Cloudbees application ID:
+
+settings(CloudBees.applicationId := Some("ACCOUNT_NAME/CLOUDBEES_APPLICATION_ID"))
+
+## 4. Deploy subsequent changes
 
 Just use the command:   play cloudbees-deploy
 
@@ -67,59 +128,6 @@ In the play2-clickstart-java directory, open a command line, and then type:
 Then deploy it on cloudbees typing:
 
     bees app:deploy -a MYAPP_ID -t play2 -Rjava_version=1.7 dist/*.zip proxyBuffering=false
-
-# Manual Local-Run:
-
-A) You will need a locally running MySQL server for this instance, or 
-B) you can use your cloudbees DB created above as part of of the clickstart.
-
-In both cases you will also need the db password which must be resolved by using the following command:
-
-  bees db:info -p DB_NAME
-
-.. where DB_NAME must be replaced by the name of your database (f.e.: bees db:info -p av-pirna).
-
-## A) Provide the environment variables so Play can connect to your local DB: 
-    
-    export DATABASE_URL_DB=mysql://URL_TO_DB_HERE/DB_NAME
-    export DATABASE_PASSWORD_DB=PASSWORD_HERE
-    export DATABASE_USERNAME_DB=USERNAME_HERE
-
-## B) Provide the environment variables so Play can connect to the reomte DBaaS: 
-
-First, find the details to to connect from the desktop to your CloudBees DB:
-
-    bees db:info -p DB_ID
-
-For example for using the database with the id av-pirna, extract the information like this:
-
-    $ bees db:info -p av-pirna
-
-    Database name: av-pirna
-    Account:       devel
-    Status:        active
-    Master:        ec2-23-21-211-172.compute-1.amazonaws.com:3306
-    Port:          3306
-    Username:      av-pirna
-    Password:      %Commented out%
-
-Then note the info and set the following environment variables: 
-
-    export DATABASE_URL_DB="mysql://(EC2 host and port from above)/(database username from above)"
-    export DATABASE_USERNAME_DB="(from above)"
-    export DATABASE_PASSWORD_DB="(from above)"
-
-In case of the previously given example this would end in the following concrete values:
-
-    DATABASE_URL_DB="mysql://ec2-23-21-211-172.compute-1.amazonaws.com:3306/av-pirna"
-    DATABASE_USERNAME_DB="av-pirna"
-    DATABASE_PASSWORD_DB="%Commented out%"
-
-Use the following command, and then browse to localhost:9000:
-
-    play run   
-    
-To get your cloudbees DB info - run bees db:info -p youraccount/appname(from your clickstart)    
 
 # Browse your DBaaS on Cloudbees
 
