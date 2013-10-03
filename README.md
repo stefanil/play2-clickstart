@@ -1,6 +1,6 @@
 #  Automatic Remote-Deployment (by using a Clickstart):
 
-This clickstart sets up a SBT build service, repository and a basic Play 2 application.
+This clickstart sets up a SBT build service, repository and a basic Play 2 Java application.
 
 <a href="https://grandcentral.cloudbees.com/?CB_clickstart=https://raw.github.com/stefanil/play2-java-clickstart/master/clickstart.json"><img src="https://d3ko533tu1ozfq.cloudfront.net/clickstart/deployInstantly.png"/></a>
 
