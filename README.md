@@ -2,7 +2,7 @@
 
 This Clickstartstart uses Play 2.1.4.
 
-## 1. Initialize the Application on CLoudbees
+## 1. Initialize the Application on Cloudbees
 
 This clickstart sets up a SBT build service, repository and a basic Play 2 Java application.
 
