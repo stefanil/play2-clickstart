@@ -11,11 +11,21 @@ object ApplicationBuild extends Build {
     javaCore,
     javaJdbc,
     javaEbean,
-    "mysql" % "mysql-connector-java" % "5.1.21", jdbc, anorm
+    "mysql" % "mysql-connector-java" % "5.1.21", 
+    jdbc, 
+    anorm
   )
 
   val main = play.Project(appName, appVersion, appDependencies)
-    .settings(testOptions in Test += Tests.Argument("junitxml", "console"))
+    .settings(      
+      testOptions in Test ~= { args =>
+        for {
+          arg <- args
+          val ta: Tests.Argument = arg.asInstanceOf[Tests.Argument]
+          val newArg = if(ta.framework == Some(TestFrameworks.JUnit)) ta.copy(args = List.empty[String]) else ta
+        } yield newArg
+      }
+    )
     .settings(cloudBeesSettings :_*)
     .settings(CloudBees.applicationId := Some("devel/play2-java-test"))
 
