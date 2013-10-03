@@ -1,5 +1,7 @@
 #  Automatic Remote-Deployment (by using a Clickstart):
 
+## Initialize the Application on CLoudbees
+
 This clickstart sets up a SBT build service, repository and a basic Play 2 Java application.
 
 <a href="https://grandcentral.cloudbees.com/?CB_clickstart=https://raw.github.com/stefanil/play2-java-clickstart/master/clickstart.json"><img src="https://d3ko533tu1ozfq.cloudfront.net/clickstart/deployInstantly.png"/></a>
@@ -10,6 +12,10 @@ You can launch this on Cloudbees via a clickstart automatically, or follow the i
 
 If you don't have a cloudbees account, Sign in with GitHub:
 <button onClick="javascript:window.location='https://grandcentral.cloudbees.com/authenticate/start?provider=github&login_redirect=/';"><img src="https://grandcentral.cloudbees.com/images/github-icon_40.png" /></button>
+
+## Deploy subsequent changes
+
+Just use the command:   play cloudbees-deploy
 
 # Manual Remote-Deployment: 
 
