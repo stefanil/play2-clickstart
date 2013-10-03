@@ -60,10 +60,11 @@ C) The third opportunity uses the Cloudbees SDK and as B) does not include git p
     play dist
     bees app:deploy -a APP_ID -t play2  dist/APP_NAME-VERSION.zip
 
-## 6. Configure the DB for local development
+## 6. Configure the DB layer for local development
 
 A) You will need a locally running MySQL server for this instance, or 
-B) you can use your cloudbees DB created above as part of of the clickstart.
+B) you can use your cloudbees DB created above as part of of the clickstart, or
+C) you can use the embedded database H2 by using an alternative application configuration for development.
 
 In both cases you will also need the db password which must be resolved by using the following command:
 
@@ -112,6 +113,10 @@ Use the following command, and then browse to localhost:9000:
     play run   
     
 To get your cloudbees DB info - run bees db:info -p youraccount/appname(from your clickstart) 
+
+### C) Using an alternative Configuration File
+
+play -Dconfig.resource=CONF_FILENAME run
 
 
 # Manual Remote-Deployment: 
